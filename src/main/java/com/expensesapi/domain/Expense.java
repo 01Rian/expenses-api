@@ -1,14 +1,30 @@
 package com.expensesapi.domain;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.data.annotation.Id;
+
 import java.time.LocalDate;
 
 public class Expense {
 
+    @Id
     private Long id;
+    @NotEmpty
     private String description;
+    @NotNull
     private LocalDate date;
-    private double value;
+    private Double value;
+    @NotNull
     private Category category;
+
+    public Double getValue() {
+        return value;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
+    }
 
     public Long getId() {
         return id;
@@ -32,14 +48,6 @@ public class Expense {
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public double getValue() {
-        return value;
-    }
-
-    public void setValue(double value) {
-        this.value = value;
     }
 
     public Category getCategory() {
